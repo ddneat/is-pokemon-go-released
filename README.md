@@ -1,6 +1,6 @@
 # Is Pokémon Go Released
 
-> Check if Pokémon GO has been officially released in a certain country.
+> Check if Pokémon GO is officially released in a certain country.
 
 ## Install
 
