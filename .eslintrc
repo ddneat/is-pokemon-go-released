@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": [2, "never"]
+  },
+  "globals": {
+    "suite": true,
+    "setup": true,
+    "test": true,
+    "assert": true
+  }
+}

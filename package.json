@@ -1,0 +1,45 @@
+{
+  "name": "is-pokemon-go-released",
+  "version": "1.0.0",
+  "description": "Check if Pokemon GO has been officially released in a certain country.",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-jsx-a11y": "^1.5.5",
+    "eslint-plugin-react": "^5.2.2",
+    "mocha": "^2.5.3",
+    "sinon": "^1.17.4"
+  },
+  "scripts": {
+    "test": "mocha -u tdd ./src/*.test.js",
+    "lint": "eslint src",
+    "start": "node example"
+  },
+  "author": "davidspinat",
+  "license": "MIT",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/davidspinat/is-pokemon-go-released.git"
+  },
+  "keywords": [
+    "pokemon",
+    "go",
+    "released",
+    "appstore"
+  ],
+  "bugs": {
+    "url": "https://github.com/davidspinat/is-pokemon-go-released/issues"
+  },
+  "homepage": "https://github.com/davidspinat/is-pokemon-go-released#readme"
+}
