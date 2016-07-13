@@ -1,8 +1,8 @@
-const appId = /id1094591345/;
-const searchTerm = 'pokemongo';
+const appId = 'id1094591345';
+const matcher = /action view-in-itunes/;
 
 const appStoreUrl = (country) => (
-  `https://itunes.apple.com/search?term=${searchTerm}&country=${country}&entity=software`
+  `https://itunes.apple.com/${country}/app/pokemon-go/${appId}`
 );
 
 module.exports = (fetch) => (country) =>
@@ -13,5 +13,5 @@ module.exports = (fetch) => (country) =>
       }
       return response.text();
     })
-    .then(text => !!text.match(appId))
+    .then(text => !!text.match(matcher))
 ;
