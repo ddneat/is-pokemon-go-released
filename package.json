@@ -1,6 +1,6 @@
 {
   "name": "is-pokemon-go-released",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Check if Pokemon GO has been officially released in a certain country.",
   "main": "src/index.js",
   "engines": {
