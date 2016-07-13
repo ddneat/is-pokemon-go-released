@@ -28,7 +28,7 @@ npm start --country='de'
 ## The cURL Way
 
 ```
-curl -s https://itunes.apple.com/search\?term\=pokemongo\&country\=us\&entity\=software | grep id1094591345 | wc -l
+curl -s https://itunes.apple.com/us/app/pokemon-go/id1094591345 | grep view-in-itunes | wc -l
 // => false
 ```
 
