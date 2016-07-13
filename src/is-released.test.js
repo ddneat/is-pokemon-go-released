@@ -29,7 +29,7 @@ suite('isReleased', () => {
     isReleased('de');
     assert.equal(
       fetchMock.lastCall.args[0],
-      'https://itunes.apple.com/search?term=pokemongo&country=de&entity=software'
+      'https://itunes.apple.com/de/app/pokemon-go/id1094591345'
     );
   });
 
@@ -38,7 +38,7 @@ suite('isReleased', () => {
     isReleased('de');
     assert.equal(
       fetchMock.lastCall.args[0],
-      'https://itunes.apple.com/search?term=pokemongo&country=de&entity=software'
+      'https://itunes.apple.com/de/app/pokemon-go/id1094591345'
     );
   });
 
