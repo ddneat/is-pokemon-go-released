@@ -34,7 +34,7 @@ curl -s https://itunes.apple.com/search\?term\=pokemongo\&country\=us\&entity\=s
 
 ## Related
 
-[is-pokemon-go-up](https://github.com/sotojuan/is-pokemon-go-up/blob/master/readme.md).
+[is-pokemon-go-up](https://github.com/sotojuan/is-pokemon-go-up/blob/master/readme.md)
 
 ## Licence
  
