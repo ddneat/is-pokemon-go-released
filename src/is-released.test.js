@@ -4,50 +4,28 @@ const sinon = require('sinon');
 const createIsReleased = require('./is-released');
 
 suite('isReleased', () => {
-  let resultPromise;
-  let fetchPromise;
-  let fetchMock;
+  let requestPromise;
+  let requestMock;
 
   setup(() => {
-    resultPromise = {
+    requestPromise = {
       then: sinon.stub()
     };
-    fetchPromise = {
-      then: sinon.stub().returns(resultPromise)
-    };
-    fetchMock = sinon.stub().returns(fetchPromise);
+    requestMock = sinon.stub().returns(requestPromise);
   });
 
-  test('calls fetchMock once', () => {
-    const isReleased = createIsReleased(fetchMock);
+  test('calls requestMock once', () => {
+    const isReleased = createIsReleased(requestMock);
     isReleased();
-    assert.ok(fetchMock.calledOnce);
+    assert.ok(requestMock.calledOnce);
   });
 
-  test('calls fetchMock with the passed country', () => {
-    const isReleased = createIsReleased(fetchMock);
+  test('calls requestMock with correct url', () => {
+    const isReleased = createIsReleased(requestMock);
     isReleased('de');
     assert.equal(
-      fetchMock.lastCall.args[0],
+      requestMock.lastCall.args,
       'https://itunes.apple.com/de/app/pokemon-go/id1094591345'
-    );
-  });
-
-  test('calls fetchMock with the passed country', () => {
-    const isReleased = createIsReleased(fetchMock);
-    isReleased('de');
-    assert.equal(
-      fetchMock.lastCall.args[0],
-      'https://itunes.apple.com/de/app/pokemon-go/id1094591345'
-    );
-  });
-
-  test('throws an error when response status is 404', () => {
-    const isReleased = createIsReleased(fetchMock);
-    fetchPromise.then.callsArgWith(0, { status: 404 });
-    assert.throws(
-      () => isReleased('de'),
-      /Bad response from server/
     );
   });
 });
