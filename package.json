@@ -21,7 +21,8 @@
   "scripts": {
     "test": "mocha -u tdd ./src/*.test.js",
     "lint": "eslint src",
-    "start": "node example"
+    "start": "node example",
+    "test-ci": "npm run lint && npm test"
   },
   "author": "davidspinat",
   "license": "MIT",
