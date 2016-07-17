@@ -1,4 +1,4 @@
-# Is Pokémon Go Released
+# Is Pokémon Go Released [![Build Status](https://travis-ci.org/davidspinat/is-pokemon-go-released.svg)](https://travis-ci.org/davidspinat/is-pokemon-go-released)
 
 > Check if Pokémon GO has been officially released in a certain country.
 
