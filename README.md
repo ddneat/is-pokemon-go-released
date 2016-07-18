@@ -29,7 +29,7 @@ npm start --country='de'
 
 ```
 curl -s https://itunes.apple.com/us/app/pokemon-go/id1094591345 | grep view-in-itunes | wc -l
-// => false
+// => true
 ```
 
 ## Related
