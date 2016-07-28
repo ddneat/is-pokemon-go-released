@@ -4,14 +4,10 @@ const sinon = require('sinon');
 const createIsReleased = require('./is-released');
 
 suite('isReleased', () => {
-  let requestPromise;
   let requestMock;
 
   setup(() => {
-    requestPromise = {
-      then: sinon.stub()
-    };
-    requestMock = sinon.stub().returns(requestPromise);
+    requestMock = sinon.stub().returns(Promise.resolve());
   });
 
   test('calls requestMock once', () => {
@@ -27,5 +23,31 @@ suite('isReleased', () => {
       requestMock.lastCall.args,
       'https://itunes.apple.com/de/app/pokemon-go/id1094591345'
     );
+  });
+
+  test('returns true on match', (done) => {
+    requestMock.returns(Promise.resolve('foo action view-in-itunes bar'));
+
+    const isReleased = createIsReleased(requestMock);
+    isReleased('de').then((result) => {
+      assert.deepEqual(
+        result,
+        true
+      );
+      done();
+    });
+  });
+
+  test('returns false on mismatch', (done) => {
+    requestMock.returns(Promise.resolve('foo bar'));
+
+    const isReleased = createIsReleased(requestMock);
+    isReleased('de').then((result) => {
+      assert.deepEqual(
+        result,
+        false
+      );
+      done();
+    });
   });
 });
