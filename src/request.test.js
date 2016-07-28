@@ -4,14 +4,10 @@ const sinon = require('sinon');
 const createRequest = require('./request');
 
 suite('Request', () => {
-  let fetchPromise;
   let fetchMock;
 
   setup(() => {
-    fetchPromise = {
-      then: sinon.stub()
-    };
-    fetchMock = sinon.stub().returns(fetchPromise);
+    fetchMock = sinon.stub().returns(Promise.resolve());
   });
 
   test('calls fetchMock once', () => {
@@ -29,21 +25,29 @@ suite('Request', () => {
     );
   });
 
-  test('calls fetchMock with the passed country', () => {
+  test('throws an error when response status is 404', (done) => {
+    fetchMock.returns(Promise.resolve({ status: 404 }));
     const request = createRequest(fetchMock);
-    request('some-url');
-    assert.equal(
-      fetchMock.lastCall.args[0],
-      'some-url'
-    );
+
+    request('some-url').catch((error) => {
+      assert.deepEqual(
+        error,
+        /Bad response from server/
+      );
+      done();
+    });
   });
 
-  test('throws an error when response status is 404', () => {
+  test('returns text', (done) => {
+    fetchMock.returns(Promise.resolve({ text: () => 'foobar' }));
     const request = createRequest(fetchMock);
-    fetchPromise.then.callsArgWith(0, { status: 404 });
-    assert.throws(
-      () => request('some-url'),
-      /Bad response from server/
-    );
+
+    request('some-url').then((result) => {
+      assert.deepEqual(
+        result,
+        'foobar'
+      );
+      done();
+    });
   });
 });

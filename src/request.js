@@ -1,4 +1,4 @@
-module.exports = (fetch) => (url) =>
+module.exports = fetch => url =>
   fetch(url)
     .then(response => {
       if (response.status >= 400) {
